@@ -31,7 +31,7 @@ jobs:
               VALIDATE_ALL_CODEBASE: true
               DEFAULT_WORKFLOW: master  
               # Regex para incluir apenas o arquivo específico, ignorando caminhos absolutos
-              FILTER_REGEX_INCLUDE:".*src/components/choose-ride\\.component\\.js$"
+              FILTER_REGEX_INCLUDE: '.*src/components/choose-ride\.component\.js$'
               #FILTER_REGEX_INCLUDE: .*src/.*
              
     #nome do job para testes end-to-end
