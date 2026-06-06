@@ -1,4 +1,4 @@
-export const templateRidePage = document.createElement('template');
+export const templateRidePage = document.createElement('template')
 templateRidePage.innerHTML = `<div class="row">
     <h2 id="title" class="col-12 display-4">
     </h2>
@@ -41,9 +41,9 @@ templateRidePage.innerHTML = `<div class="row">
     <div class="offset-1 col-4">
       <img id="ride-image" class="rounded img-fluid" alt="" />
     </div>
-  </div>`;
+  </div>`
 
-export const heightTemplate = document.createElement('template');
+export const heightTemplate = document.createElement('template')
 heightTemplate.innerHTML = `<div class="form-group row">
   <label for="heightInput" class="col-md-4 col-form-label">Height</label>
   <div class="col-md-8">
@@ -53,7 +53,7 @@ heightTemplate.innerHTML = `<div class="form-group row">
       id="heightInput"
     />
   </div>
-  </div>`;
+  </div>`
 
-export const minimalRideHeightTemplate = document.createElement('template');
-minimalRideHeightTemplate.innerHTML = `<p class="lead">Minimum height: <span class="min-height"></span> cm</p>`;
+export const minimalRideHeightTemplate = document.createElement('template')
+minimalRideHeightTemplate.innerHTML = '<p class="lead">Minimum height: <span class="min-height"></span> cm</p>'

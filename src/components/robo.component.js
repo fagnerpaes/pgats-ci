@@ -1,44 +1,44 @@
 export class RoboComponent extends HTMLElement {
-  by = new Selector(this);
+  by = new Selector(this)
 }
 
 export class Selector {
-  #element;
+  #element
 
   /** @type {Record<string, HTMLElement>} */
-  class;
+  class
   /** @type {Record<string, HTMLElement>} */
-  id;
+  id
 
   /** @param {HTMLElement} element */
-  constructor(element) {
-    this.#element = element;
+  constructor (element) {
+    this.#element = element
     this.class = new Proxy(
       {},
       {
         get: (_, property) =>
-          this.#element?.querySelector(`.${toKebabCase(String(property))}`),
-      },
-    );
+          this.#element?.querySelector(`.${toKebabCase(String(property))}`)
+      }
+    )
     this.id = new Proxy(
       {},
       {
         get: (_, property) =>
-          this.#element?.querySelector(`#${toKebabCase(String(property))}`),
-      },
-    );
+          this.#element?.querySelector(`#${toKebabCase(String(property))}`)
+      }
+    )
   }
 }
 
 /** @param {string} str */
-function toKebabCase(str) {
-  return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+function toKebabCase (str) {
+  return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
 }
 
 /**
  * @param {HTMLTemplateElement} template
  * @returns {HTMLElement}
  */
-export function cloneTemplate(template) {
-  return /** @type {HTMLElement} */ (template.content.cloneNode(true));
+export function cloneTemplate (template) {
+  return /** @type {HTMLElement} */ (template.content.cloneNode(true))
 }

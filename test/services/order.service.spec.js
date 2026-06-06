@@ -1,12 +1,12 @@
-import { jest } from '@jest/globals';
-import { OrderService } from '../../src/services/order.service.js';
-import { createRideOrder } from '../helpers.js';
+import { jest } from '@jest/globals'
+import { OrderService } from '../../src/services/order.service.js'
+import { createRideOrder } from '../helpers.js'
 
 describe(OrderService, () => {
   /** @type {OrderService} */
-  let sut;
+  let sut
   /** @type {jest.Mocked<Storage>} */
-  let storageMock;
+  let storageMock
 
   beforeEach(() => {
     storageMock = {
@@ -15,20 +15,20 @@ describe(OrderService, () => {
       removeItem: jest.fn(),
       setItem: jest.fn(),
       length: 0,
-      key: jest.fn(),
-    };
-    sut = new OrderService(storageMock);
-    sut.clear();
-  });
+      key: jest.fn()
+    }
+    sut = new OrderService(storageMock)
+    sut.clear()
+  })
 
   describe('currentOrder', () => {
     it('should retrieve from storage', () => {
-      const expected = createRideOrder();
-      storageMock.getItem.mockReturnValue(JSON.stringify(expected));
-      expect(sut.currentOrder).toStrictEqual(expected);
-    });
+      const expected = createRideOrder()
+      storageMock.getItem.mockReturnValue(JSON.stringify(expected))
+      expect(sut.currentOrder).toStrictEqual(expected)
+    })
     it('should retrieve undefined when there is no order yes', () => {
-      expect(sut.currentOrder).toBe(undefined);
-    });
-  });
-});
+      expect(sut.currentOrder).toBe(undefined)
+    })
+  })
+})

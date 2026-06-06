@@ -1,7 +1,7 @@
-import { router } from '../router.js';
-import { cloneTemplate, RoboComponent } from './robo.component.js';
+import { router } from '../router.js'
+import { cloneTemplate, RoboComponent } from './robo.component.js'
 
-const template = document.createElement('template');
+const template = document.createElement('template')
 template.innerHTML = `
 <div class="container">
     <div class="row">
@@ -14,39 +14,39 @@ template.innerHTML = `
         Curious about the <a target="_blank" href="reports/coverage/lcov-report/index.html">code coverage report</a> or the <a target="_blank" href="reports/mutation/mutation.html">mutation testing report</a>? 
     </div>
 </div>
-`;
+`
 export class RoboCoastersComponent extends RoboComponent {
   /** @type {string | undefined} */
-  currentlyViewedRoute;
+  currentlyViewedRoute
 
-  connectedCallback() {
-    this.appendChild(cloneTemplate(template));
-    this.view = this.by.id.view;
+  connectedCallback () {
+    this.appendChild(cloneTemplate(template))
+    this.view = this.by.id.view
     this.routerSubscription = router.onNext((route) => {
-      this.route = route;
-      this.render();
-    });
+      this.route = route
+      this.render()
+    })
   }
 
-  disconnectedCallback() {
-    this.routerSubscription();
+  disconnectedCallback () {
+    this.routerSubscription()
   }
 
-  render() {
+  render () {
     switch (this.route[0]) {
       case 'ride':
-        this.view.innerHTML = `<robo-ride ride-id="${this.route[1]}"></robo-ride>`;
-        break;
+        this.view.innerHTML = `<robo-ride ride-id="${this.route[1]}"></robo-ride>`
+        break
       case 'success':
-        this.view.innerHTML = `<robo-success></robo-success>`;
-        break;
+        this.view.innerHTML = '<robo-success></robo-success>'
+        break
       case '':
-        this.view.innerHTML = `<robo-choose-ride></robo-choose-ride>`;
+        this.view.innerHTML = '<robo-choose-ride></robo-choose-ride>'
       default:
-        router.navigate([]);
-        break;
+        router.navigate([])
+        break
     }
   }
 }
 
-customElements.define('robo-coasters', RoboCoastersComponent);
+customElements.define('robo-coasters', RoboCoastersComponent)

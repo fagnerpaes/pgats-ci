@@ -6,7 +6,7 @@ import { RoboComponent, Selector, cloneTemplate } from './robo.component.js'
 export class ChooseRideComponent extends RoboComponent {
   /** @type {Ride[]} */
   rides = []
-  connectedCallback( ) {
+  connectedCallback () {
     this.appendChild(cloneTemplate(templateChooseRide))
     rideService.getRides().then((rides) => {
       this.rides = rides
@@ -15,14 +15,14 @@ export class ChooseRideComponent extends RoboComponent {
     this.#render()
   }
 
-  #render( ) {
+  #render () {
     this.by.id.rides.replaceChildren(
       ...this.rides.map((ride) => this.#renderOrderRow(ride))
     )
   }
 
   /** @param {Ride} ride */
-  #renderOrderRow( ride ) {
+  #renderOrderRow (ride) {
     const element = cloneTemplate(templateRide)
     const row = new Selector(element)
     row.class.cardTitle.innerText = ride.name
