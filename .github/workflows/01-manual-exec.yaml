@@ -18,18 +18,18 @@ jobs:
         contents: read
         packages: read
 
-     # passos do job
-     steps:
-      - name: Checkout do código
-      # clone do projeto
-        uses: actions/checkout@v4
+      # passos do job
+      steps:
+        - name: Checkout do código
+        # clone do projeto
+          uses: actions/checkout@v4
                    
-      - name: Executar Super-Linter
-        uses: github/super-linter/slim@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_WORKFLOW: main
+        - name: Executar Super-Linter
+          uses: github/super-linter/slim@v5
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            VALIDATE_ALL_CODEBASE: false
+            DEFAULT_WORKFLOW: main
               
     #nome do job
     e2e-tests:
