@@ -28,7 +28,7 @@ jobs:
             uses: github/super-linter/slim@v5
             env:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              VALIDATE_ALL_CODEBASE: false
+              VALIDATE_ALL_CODEBASE: true
               DEFAULT_WORKFLOW: master
 
 
