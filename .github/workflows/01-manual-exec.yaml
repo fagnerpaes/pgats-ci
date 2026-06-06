@@ -33,7 +33,7 @@ jobs:
               
 
     #nome do job para testes end-to-end
-    e2e-tests:
+    e2e:
       needs: lint
       runs-on: ubuntu-latest
       steps:
