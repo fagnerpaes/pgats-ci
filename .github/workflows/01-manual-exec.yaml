@@ -20,7 +20,7 @@ jobs:
       # passos do job
       steps:
         - name: Checkout do código
-        # clone do projeto
+          #clone do projeto
           uses: actions/checkout@v4
                    
         - name: Executar Super-Linter
