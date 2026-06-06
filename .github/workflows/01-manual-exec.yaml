@@ -11,20 +11,32 @@ on:
 #tarefas dentro da pipeline = jobs
 jobs:
     #nome do job
-    e2e-tests:
+    tests:
         # maquina onde o job vai rodar
         runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            packages: read
 
         # passos do job
         steps:
-            # clone do projeto
-            - uses: actions/checkout@v4
+            - name: "Checkout do código"
+              # clone do projeto
+              uses: actions/checkout@v4
+            
+            - name: "Executar Super-Linter"
+              uses: github/super-linter/slim@v5
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                VALIDATE_ALL_CODEBASE: false
+                DEFAULT_WORKFLOW: main
 
             # instalação do node
-            - uses: actions/setup-node@v4
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
               with:
-                  node-version: 24.x
-
+                  node-version: 24.x    
+                                             
             # instalação do Yarn
             - name: Instalando Yarn
               run: npm install -g yarn
