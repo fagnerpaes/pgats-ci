@@ -5,12 +5,10 @@ name: "Execução Manual"
 
 # gatilhos / triggers - regras de disparo
 # gatilho manual = workflow_dispatch
-
 on:
     workflow_dispatch:
 
 #tarefas dentro da pipeline = jobs
-
 jobs:
     #nome do job
     e2e-tests:
@@ -22,7 +20,7 @@ jobs:
             # clone do projeto
             - uses: actions/checkout@v4
 
-            # instalção do node
+            # instalação do node
             - uses: actions/setup-node@v4
               with:
                   node-version: 24.x
@@ -31,7 +29,7 @@ jobs:
             - name: Instalando Yarn
               run: npm install -g yarn
             
-            #   instalação das dependências
+            # instalação das dependências
             - name: Instalando dependências
               run: yarn
             
