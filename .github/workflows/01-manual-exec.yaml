@@ -11,7 +11,7 @@ on:
 #tarefas dentro da pipeline = jobs
 jobs:
     #nome do job
-    tests:
+    lint:
         # maquina onde o job vai rodar
         runs-on: ubuntu-latest
         permissions:
@@ -20,35 +20,44 @@ jobs:
 
         # passos do job
         steps:
-            - name: "Checkout do código"
-              # clone do projeto
-              uses: actions/checkout@v4
-            
-            - name: "Executar Super-Linter"
-              uses: github/super-linter/slim@v5
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                VALIDATE_ALL_CODEBASE: false
-                DEFAULT_WORKFLOW: main
+          - name: Checkout do código
+          # clone do projeto
+            uses: actions/checkout@v4
+                     
+          - name: "Executar Super-Linter
+            uses: github/super-linter/slim@v5
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              VALIDATE_ALL_CODEBASE: false
+              DEFAULT_WORKFLOW: main
+              
 
-            # instalação do node
-            - name: Setup Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 24.x    
-                                             
-            # instalação do Yarn
-            - name: Instalando Yarn
-              run: npm install -g yarn
+    #nome do job
+    e2e-tests:
+      needs: lint
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      # instalação do node
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.x    
+                                            
+      # instalação do Yarn
+      - name: Instalando Yarn
+        run: npm install -g yarn
             
-            # instalação das dependências
-            - name: Instalando dependências
-              run: yarn
+      # instalação das dependências
+      - name: Instalando dependências
+        run: yarn
             
-            # instalação dos Browsers do Playwright
-            - name: Instalando Browsers do Playwright
-              run: yarn playwright install
+      # instalação dos Browsers do Playwright
+      - name: Instalando Browsers do Playwright
+        run: yarn playwright install
             
-            # executar os testes e2e
-            - name: Executando testes e2e
-              run: yarn run e2e
+      # executar os testes e2e
+      - name: Executando testes e2e
+        run: yarn run e2e
