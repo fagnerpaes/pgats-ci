@@ -33,4 +33,5 @@ export class OrderService {
   }
 }
 
+const x = 10;
 export const orderService = new OrderService(localStorage);
