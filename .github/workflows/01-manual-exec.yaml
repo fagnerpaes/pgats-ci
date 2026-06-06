@@ -14,10 +14,9 @@ jobs:
     lint:
      # maquina onde o job vai rodar
      runs-on: ubuntu-latest
-      permissions:
-        contents: read
-        packages: read
-
+     permissions:
+      contents: read
+      packages: read
       # passos do job
       steps:
         - name: Checkout do código
