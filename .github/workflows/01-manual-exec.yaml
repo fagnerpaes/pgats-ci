@@ -10,7 +10,7 @@ on:
 
 #tarefas dentro da pipeline = jobs
 jobs:
-    #nome do job
+    #nome do job para validacao padroes de codigo estático
     lint:
         # maquina onde o job vai rodar
         runs-on: ubuntu-latest
@@ -32,7 +32,7 @@ jobs:
               DEFAULT_WORKFLOW: main
               
 
-    #nome do job
+    #nome do job para testes end-to-end
     e2e-tests:
       needs: lint
       runs-on: ubuntu-latest
