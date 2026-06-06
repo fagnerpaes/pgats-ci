@@ -30,6 +30,18 @@ jobs:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               VALIDATE_ALL_CODEBASE: false
               DEFAULT_WORKFLOW: master
+
+
+
+
+
+
+
+
+
+
+
+              
               
 
     #nome do job para testes end-to-end

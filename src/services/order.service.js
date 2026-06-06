@@ -33,5 +33,4 @@ export class OrderService {
   }
 }
 
-const x = 10; //variavel não utilizada para o super linter detectar!
 export const orderService = new OrderService(localStorage);
