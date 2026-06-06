@@ -29,19 +29,9 @@ jobs:
             env:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               VALIDATE_ALL_CODEBASE: true
-              DEFAULT_WORKFLOW: master
-
-
-
-
-
-
-
-
-
-              
-              
-
+              DEFAULT_WORKFLOW: master  
+              FILTER_REGEX_INCLUDE: .*src/.*
+             
     #nome do job para testes end-to-end
     e2e:
       needs: lint
