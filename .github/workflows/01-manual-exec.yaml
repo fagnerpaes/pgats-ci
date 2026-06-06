@@ -22,7 +22,7 @@ jobs:
         steps:
           - name: Checkout do código
           # clone do projeto
-            uses: actions/checkout@v4
+            uses: actions/checkout@v5
                      
           - name: Executar Super-Linter
             uses: github/super-linter/slim@v5
@@ -30,8 +30,6 @@ jobs:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               VALIDATE_ALL_CODEBASE: false
               DEFAULT_WORKFLOW: master
-
-
 
 
 
@@ -50,7 +48,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
       - name: Checkout do código
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # instalação do node
       - name: Setup Node.js
