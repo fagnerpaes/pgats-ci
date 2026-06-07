@@ -36,7 +36,7 @@ jobs:
               #FILTER_REGEX_INCLUDE: .*src/.*
              
     #nome do job para testes end-to-end
-    E2Etests:
+    e2e:
       needs: lint
       #runs-on: ubuntu-latest
       runs-on: self-hosted
