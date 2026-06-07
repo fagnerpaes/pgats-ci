@@ -13,8 +13,8 @@ jobs:
     #nome do job para validacao padroes de codigo estático
     lint:
         # maquina onde o job vai rodar
-        runs-on: ubuntu-latest
-        #runs-on: self-hosted
+        #runs-on: ubuntu-latest
+        runs-on: self-hosted
         permissions:
             contents: read
             packages: read
@@ -38,6 +38,7 @@ jobs:
     #nome do job para testes end-to-end
     e2e:
       needs: lint
+      #runs-on: ubuntu-latest
       runs-on: self-hosted
       steps:
       - name: Checkout do código
@@ -47,28 +48,19 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: 24.x
-          cache: 'yarn'    
-                                            
+          node-version: 24.x    
+
       # instalação do Yarn
-      - name: Habilitar Corepack e Yarn
-        run: |
-          corepack enable
-          corepack prepare yarn@stable --activate
-        #run: npm install -g yarn
-            
+      - name: Instalando Yarn
+        run: npm install -g yarn
+
       # instalação das dependências
-      - name: Instalando dependências do projeto
-        run: yarn install --frozen-lockfile
-            
+      - name: Instalando dependências
+        run: yarn
+
       # instalação dos Browsers do Playwright
       - name: Instalando Browsers do Playwright
-        #run: yarn playwright install
-        run: npx playwright install-deps chromium
+        run: yarn playwright install
 
-      - name: Instalar browser Chromium
-      run: npx playwright install chromium
-            
       # executar os testes e2e
       - name: Executando testes e2e
-        run: yarn run e2e
