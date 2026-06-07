@@ -38,7 +38,6 @@ jobs:
     #nome do job para testes end-to-end
     e2e:
       needs: lint
-      #runs-on: ubuntu-latest
       runs-on: self-hosted
       steps:
       - name: Checkout do código
