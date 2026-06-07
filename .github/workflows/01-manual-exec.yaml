@@ -13,8 +13,8 @@ jobs:
     #nome do job para validacao padroes de codigo estático
     lint:
         # maquina onde o job vai rodar
-        #runs-on: ubuntu-latest
-        runs-on: self-hosted
+        runs-on: ubuntu-latest
+        #runs-on: self-hosted
         permissions:
             contents: read
             packages: read
