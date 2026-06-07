@@ -36,7 +36,7 @@ jobs:
               #FILTER_REGEX_INCLUDE: .*src/.*
              
     #nome do job para testes end-to-end
-    e2e:
+    E2E tests:
       needs: lint
       #runs-on: ubuntu-latest
       runs-on: self-hosted
@@ -48,19 +48,27 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: 24.x    
+          node-version: 24.x
+          cache: 'yarn'    
                                             
       # instalação do Yarn
-      - name: Instalando Yarn
-        run: npm install -g yarn
+      - name: Habilitar Corepack e Yarn
+        run: |
+          corepack enable
+          corepack prepare yarn@stable --activate
+        #run: npm install -g yarn
             
       # instalação das dependências
-      - name: Instalando dependências
-        run: yarn
+      - name: Instalando dependências do projeto
+        run: yarn install --frozen-lockfile
             
       # instalação dos Browsers do Playwright
       - name: Instalando Browsers do Playwright
-        run: yarn playwright install
+        #run: yarn playwright install
+        run: npx playwright install-deps chromium
+
+      - name: Instalar browser Chromium
+      run: npx playwright install chromium
             
       # executar os testes e2e
       - name: Executando testes e2e
