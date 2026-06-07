@@ -64,3 +64,4 @@ jobs:
 
       # executar os testes e2e
       - name: Executando testes e2e
+        run: yarn test:e2e
